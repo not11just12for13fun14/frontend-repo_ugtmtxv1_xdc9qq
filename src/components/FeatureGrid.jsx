@@ -1,46 +1,48 @@
-import React from 'react'
-import { ShieldCheck, User, Gauge, FolderOpen } from 'lucide-react'
+import React from 'react';
+import { ShieldCheck, Layers, Gauge, User } from 'lucide-react';
 
 const features = [
   {
-    icon: <ShieldCheck className="text-[#2C3E50]" size={20} />,
+    icon: ShieldCheck,
     title: 'Accesso sicuro',
-    desc: 'Autenticazione moderna e aree protette per studenti e docenti.'
+    desc: 'Autenticazione protetta e gestione ruoli per studenti e docenti.',
   },
   {
-    icon: <FolderOpen className="text-[#2C3E50]" size={20} />,
+    icon: Layers,
     title: 'Gestione corsi',
-    desc: 'Crea, modifica e organizza corsi con moduli, lezioni e materiali.'
+    desc: 'Crea moduli, lezioni e quiz con facilità e struttura chiara.',
   },
   {
-    icon: <Gauge className="text-[#2C3E50]" size={20} />,
-    title: 'Progressi',
-    desc: 'Monitora avanzamento, lezioni completate e risultati dei quiz.'
+    icon: Gauge,
+    title: 'Tracciamento progressi',
+    desc: 'Statistiche e avanzamento in tempo reale per ogni corso.',
   },
   {
-    icon: <User className="text-[#2C3E50]" size={20} />,
+    icon: User,
     title: 'Dashboard personale',
-    desc: 'Ogni utente vede solo i corsi acquistati o assegnati.'
-  }
-]
+    desc: 'Tutto ciò che ti serve in un unico spazio intuitivo.',
+  },
+];
 
-export default function FeatureGrid() {
+const FeatureGrid = () => {
   return (
-    <section className="bg-white">
-      <div className="mx-auto max-w-6xl px-6 py-16">
-        <h2 className="text-2xl md:text-3xl font-bold text-[#2C3E50] mb-8">Pensata per la scuola e oltre</h2>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {features.map((f, i) => (
-            <div key={i} className="rounded-xl border border-[#2C3E50]/10 bg-white p-5 shadow-sm">
-              <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[#2C3E50]/5">
-                {f.icon}
+    <section className="bg-[#F4F6F7] py-16">
+      <div className="container mx-auto px-6">
+        <h2 className="text-2xl md:text-3xl font-bold text-[#2C3E50]">Perché scegliere noi</h2>
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {features.map((f, idx) => (
+            <div key={idx} className="rounded-xl bg-white p-6 shadow-sm border border-gray-100 hover:shadow-md transition">
+              <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-[#E67E22]/10 text-[#E67E22]">
+                <f.icon size={22} />
               </div>
-              <div className="font-semibold text-[#2C3E50]">{f.title}</div>
-              <div className="text-sm text-[#2C3E50]/70">{f.desc}</div>
+              <h3 className="mt-4 font-semibold text-[#2C3E50]">{f.title}</h3>
+              <p className="mt-2 text-sm text-gray-600">{f.desc}</p>
             </div>
           ))}
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
+
+export default FeatureGrid;

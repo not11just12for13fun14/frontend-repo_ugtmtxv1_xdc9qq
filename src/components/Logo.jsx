@@ -1,47 +1,51 @@
-import React from 'react'
+import React from 'react';
 
-// Logo component: "I corsi del prof" with graduation cap over a book/monitor
-// Accepts props: variant = 'light' | 'dark', size in pixels
-export default function Logo({ variant = 'light', size = 40, withText = true }) {
-  const primary = '#2C3E50' // blue
-  const accent = '#E67E22' // orange
-  const textColor = variant === 'dark' ? '#FFFFFF' : primary
+const Logo = ({ variant = 'light', size = 'md', showText = true }) => {
+  const isDark = variant === 'dark';
+  const sizeMap = {
+    sm: 28,
+    md: 36,
+    lg: 48,
+  };
+  const dim = sizeMap[size] || sizeMap.md;
+
+  const primary = '#2C3E50';
+  const secondary = '#E67E22';
+  const textColor = isDark ? 'text-white' : 'text-[#2C3E50]';
 
   return (
-    <div className="inline-flex items-center gap-3 select-none" style={{ color: textColor }}>
+    <div className="flex items-center gap-3 select-none">
       <svg
-        width={size}
-        height={size}
-        viewBox="0 0 128 128"
+        width={dim}
+        height={dim}
+        viewBox="0 0 64 64"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         aria-label="I corsi del prof logo"
       >
-        {/* Monitor base */}
-        <rect x="16" y="36" width="96" height="56" rx="8" fill={primary} />
-        <rect x="24" y="44" width="80" height="40" rx="4" fill="#FFFFFF" />
-        {/* Book pages at the bottom */}
-        <path d="M28 92c8-6 22-6 30 0 8-6 22-6 30 0" stroke={accent} strokeWidth="6" strokeLinecap="round" />
+        {/* Monitor/Book base */}
+        <rect x="8" y="16" width="48" height="32" rx="4" fill={isDark ? '#1F2A37' : '#F4F6F7'} />
+        <rect x="14" y="22" width="36" height="20" rx="2" fill="#FFFFFF" />
+        {/* Bookmark/Accent stripe */}
+        <rect x="14" y="22" width="6" height="20" fill={secondary} />
         {/* Stand */}
-        <rect x="56" y="96" width="16" height="8" rx="2" fill={primary} />
-        <rect x="40" y="104" width="48" height="8" rx="4" fill={primary} />
+        <rect x="28" y="48" width="8" height="4" rx="1" fill={primary} />
+        <rect x="20" y="52" width="24" height="4" rx="2" fill={isDark ? '#334155' : '#D1D5DB'} />
         {/* Graduation cap */}
-        <path d="M64 24L20 40l44 16 44-16-44-16z" fill={primary} />
-        <path d="M44 48c0 6 9 10 20 10s20-4 20-10" stroke={primary} strokeWidth="6" strokeLinecap="round" />
+        <path d="M32 12L54 20L32 28L10 20L32 12Z" fill={primary} />
+        <path d="M22 26C22 23.79 26.48 22 32 22C37.52 22 42 23.79 42 26V30C42 32.21 37.52 34 32 34C26.48 34 22 32.21 22 30V26Z" fill={isDark ? '#0F172A' : '#E5E7EB'} />
         {/* Tassel */}
-        <path d="M84 28v16" stroke={accent} strokeWidth="6" strokeLinecap="round" />
-        <circle cx="84" cy="46" r="4" fill={accent} />
+        <circle cx="50" cy="20" r="2" fill={secondary} />
+        <path d="M50 22V30" stroke={secondary} strokeWidth="2" strokeLinecap="round" />
       </svg>
-      {withText && (
+      {showText && (
         <div className="leading-tight">
-          <div className="font-semibold" style={{ color: textColor }}>
-            I corsi del prof
-          </div>
-          <div className="text-xs opacity-80" style={{ color: textColor }}>
-            Informatica • TPSIT • Sistemi e Reti
-          </div>
+          <div className={`font-semibold tracking-tight ${textColor}`}>I corsi del prof</div>
+          <div className={`${isDark ? 'text-gray-300' : 'text-gray-500'} text-xs`}>Impara in modo semplice</div>
         </div>
       )}
     </div>
-  )
-}
+  );
+};
+
+export default Logo;

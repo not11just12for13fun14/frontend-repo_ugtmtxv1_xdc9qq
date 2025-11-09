@@ -1,33 +1,40 @@
-import React from 'react'
-import Logo from './Logo'
+import React from 'react';
+import Logo from './Logo';
 
-export default function Footer() {
+const Footer = () => {
   return (
     <footer className="bg-[#2C3E50] text-white">
-      <div className="mx-auto max-w-6xl px-6 py-10 grid grid-cols-1 gap-8 md:grid-cols-3">
-        <div>
-          <Logo variant="dark" size={36} />
-          <p className="mt-3 text-sm text-white/80 max-w-sm">
-            Una piattaforma educativa moderna per studenti e docenti. Corsi,
-            quiz, materiali e dashboard personale.
+      <div className="container mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="md:col-span-2">
+          <Logo variant="dark" size="md" />
+          <p className="mt-4 text-sm text-gray-300 max-w-md">
+            "I corsi del prof" è la piattaforma per imparare in modo pratico e divertente. Lezioni curate, quiz mirati e un percorso chiaro.
           </p>
         </div>
         <div>
-          <div className="font-semibold mb-3">Link utili</div>
-          <ul className="space-y-2 text-white/80 text-sm">
-            <li><a href="#corsi" className="hover:underline">Corsi</a></li>
-            <li><a href="#login" className="hover:underline">Accedi</a></li>
-            <li><a href="#" className="hover:underline">Privacy</a></li>
+          <h4 className="font-semibold">Link utili</h4>
+          <ul className="mt-3 space-y-2 text-sm text-gray-300">
+            <li><a className="hover:text-white" href="#corsi">Corsi</a></li>
+            <li><a className="hover:text-white" href="#">Chi siamo</a></li>
+            <li><a className="hover:text-white" href="#">Contatti</a></li>
           </ul>
         </div>
         <div>
-          <div className="font-semibold mb-3">Contatti</div>
-          <div className="text-white/80 text-sm">info@icorsidelprof.it</div>
+          <h4 className="font-semibold">Contatti</h4>
+          <ul className="mt-3 space-y-2 text-sm text-gray-300">
+            <li>email: support@icorsidelprof.it</li>
+            <li>tel: +39 320 000 0000</li>
+          </ul>
         </div>
       </div>
-      <div className="border-t border-white/10 py-4 text-center text-xs text-white/70">
-        © {new Date().getFullYear()} I corsi del prof. Tutti i diritti riservati.
+      <div className="border-t border-white/10">
+        <div className="container mx-auto px-6 py-4 text-xs text-gray-300 flex items-center justify-between">
+          <span>© {new Date().getFullYear()} I corsi del prof. Tutti i diritti riservati.</span>
+          <a href="#" className="hover:text-white">Privacy & Termini</a>
+        </div>
       </div>
     </footer>
-  )
-}
+  );
+};
+
+export default Footer;

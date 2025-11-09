@@ -1,10 +1,12 @@
-import React from 'react'
-import Spline from '@splinetool/react-spline'
-import Logo from './Logo'
+import React from 'react';
+import Spline from '@splinetool/react-spline';
+import { ArrowRight, Play } from 'lucide-react';
+import Logo from './Logo';
 
-export default function Hero() {
+const Hero = () => {
   return (
-    <section className="relative min-h-[70vh] w-full overflow-hidden bg-[#F4F6F7]">
+    <section className="relative min-h-[80vh] w-full overflow-hidden bg-white">
+      {/* Spline Canvas */}
       <div className="absolute inset-0">
         <Spline
           scene="https://prod.spline.design/VJLoxp84lCdVfdZu/scene.splinecode"
@@ -12,33 +14,37 @@ export default function Hero() {
         />
       </div>
 
-      {/* Subtle gradient overlay for contrast (non-blocking) */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#F4F6F7] via-transparent to-white/60" />
+      {/* Gradient overlay that doesn't block interactions */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/70 via-white/80 to-white"></div>
 
-      <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-start gap-6 px-6 py-16 md:py-24">
-        <Logo size={48} withText />
-        <h1 className="text-4xl md:text-6xl font-bold text-[#2C3E50] max-w-3xl">
-          La piattaforma per i tuoi corsi di informatica
+      {/* Content */}
+      <div className="relative z-10 container mx-auto px-6 py-16 flex flex-col items-start">
+        <Logo size="lg" />
+        <h1 className="mt-8 max-w-2xl text-4xl md:text-5xl font-extrabold text-[#2C3E50] tracking-tight">
+          I corsi del prof: impara davvero, con semplicità
         </h1>
-        <p className="text-lg md:text-xl text-[#2C3E50]/80 max-w-2xl">
-          Studia TPSIT e Sistemi e Reti con lezioni chiare, quiz, materiali e
-          una dashboard personale per seguire i tuoi progressi.
+        <p className="mt-4 max-w-xl text-lg text-gray-700">
+          Piattaforma e-learning pensata per studenti e professionisti. Lezioni pratiche, progressi chiari, e supporto costante.
         </p>
-        <div className="flex flex-wrap gap-3">
+
+        <div className="mt-8 flex flex-col sm:flex-row gap-4">
           <a
             href="#corsi"
-            className="inline-flex items-center justify-center rounded-md bg-[#E67E22] px-5 py-3 text-white font-semibold shadow hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-[#E67E22]/30"
+            className="inline-flex items-center gap-2 rounded-lg bg-[#E67E22] px-5 py-3 text-white font-medium shadow hover:brightness-95 transition"
           >
-            Esplora i corsi
+            Inizia ora
+            <ArrowRight size={18} />
           </a>
           <a
-            href="#login"
-            className="inline-flex items-center justify-center rounded-md border border-[#2C3E50] px-5 py-3 text-[#2C3E50] font-semibold hover:bg-[#2C3E50] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#2C3E50]/30"
+            href="#"
+            className="inline-flex items-center gap-2 rounded-lg border border-[#2C3E50] px-5 py-3 text-[#2C3E50] font-medium bg-white/70 backdrop-blur hover:bg-white transition"
           >
-            Accedi / Registrati
+            <Play size={18} /> Guarda una lezione
           </a>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
+
+export default Hero;
